@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html> <!-- menentukan tipe dokumen sebagai HTML -->
+<html> <!-- membuka tag HTML -->
 
-<head>
-    <title>Item List</title>
+<head> <!-- bagian kepala dokumen -->
+    <title>Item List</title> <!-- judul halaman -->
 </head>
 
-<body>
-    <h1>Items</h1>
+<body> <!-- bagian isi halaman -->
+    <h1>Items</h1> <!-- judul utama halaman -->
 
     <!-- menampilkan pesan jka kondisi terpenuhi-->
     @if(session('success'))
-    <p>{{ session('success') }}</p>
+        <p>{{ session('success') }}</p>
     @endif
 
     <!-- link untuk menambahkan item baru -->
@@ -19,25 +19,25 @@
     <!-- memunculkan daftar item -->
     <ul>
         @foreach ($items as $item)
-        <li>
-            <!-- menampilkan nama item -->
-            {{ $item->name }} -
+            <li>
+                <!-- menampilkan nama item -->
+                {{ $item->name }} -
 
-            <!-- link untuk mengedit -->
-            <a href="{{ route('items.edit', $item) }}">Edit</a>
+                <!-- link untuk mengedit -->
+                <a href="{{ route('items.edit', $item) }}">Edit</a>
 
-            <!-- form untuk menghapus -->
-            <form action="{{ route('items.destroy', $item) }}" method="POST" style="display:inline;">
-                <!-- token csrf untuk mengamankan form -->
-                @csrf
+                <!-- form untuk menghapus -->
+                <form action="{{ route('items.destroy', $item) }}" method="POST" style="display:inline;">
+                    <!-- token csrf untuk mengamankan form -->
+                    @csrf
 
-                <!-- menggunakan method DELETE untuk menghapus item -->
-                @method('DELETE')
+                    <!-- menggunakan method DELETE untuk menghapus item -->
+                    @method('DELETE')
 
-                <!-- tombol untuk menghapus item -->
-                <button type="submit">Delete</button>
-            </form>
-        </li>
+                    <!-- tombol untuk menghapus item -->
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
         @endforeach
     </ul>
 </body>
